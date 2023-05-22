@@ -1,0 +1,21 @@
+1. Create MySql Database and connection with app. COMPLETED *******
+2. Create Word entity(CRUD) and all necessary layers
+3. Add validation support
+4. Add security support (OAuth? Bearer?)
+5. Create logic for association between words and user
+6. Limit how many word user can add. (maybe 100 per month)
+7. Add Swagger support
+8. Add 4000 essential words in english language
+
+9. Create ReactApp with basic functionality
+10. Add Google Translate Api support in Spring app and MAKE SURE WE CAN'T OVERUSE IT.
+    - all word added to database should be translated by google api
+      and if match could be allowed in global database, if not should
+      be stored es specific word for individual user
+
+11. Add statistics and suggestions support
+
+12. Bring application to perfection and start thinking about deployment
+
+Others(important)
+- force all englishTranslation and polishTranslation fields to be lower case in React App
