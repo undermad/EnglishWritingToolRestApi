@@ -11,6 +11,7 @@ import com.ectimel.englishwritingtool.service.WordService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -33,43 +34,43 @@ public class WordServiceImpl implements WordService {
         if (wordAsOptional.isEmpty()) {
             throw new ResourceNotFoundException("Word", "english translation", englishWord);
         }
+        Word word = wordAsOptional.get();
 
-        return modelMapper.map(wordAsOptional.get(), WordDto.class);
+        return modelMapper.map(word, WordDto.class);
     }
 
     @Override
     public WordDto createWord(WordDto wordDto) {
 
-        Optional<WordType> wordTypeAsOptional = wordTypeRepository.findByTypeName(wordDto.getWordType());
-        if (wordTypeAsOptional.isEmpty()){
-            throw new ResourceNotFoundException("Word", "type", wordDto.getWordType());
-        }
-        WordType wordType = wordTypeAsOptional.get();
+        WordType wordType = getWordTypeName(wordDto.getWordType());
 
-        Optional<Word> wordAsOptional = wordRepository
-                .findByEnglishTranslation(wordDto.getEnglishTranslation());
+        Optional<Word> wordAsOptional = wordRepository.findByEnglishTranslation(wordDto.getEnglishTranslation());
         if (wordAsOptional.isPresent()) {
-            throw new ResourceAlreadyExist("Word",
-                    "english translation",
+            throw new ResourceAlreadyExist("Word", "english translation",
                     wordDto.getEnglishTranslation());
         }
 
 
         Word word = modelMapper.map(wordDto, Word.class);
         word.setWordType(wordType);
+
         return modelMapper.map(wordRepository.save(word), WordDto.class);
     }
 
     @Override
     public WordDto updateWord(WordDto wordDto) {
 
+        WordType wordType = getWordTypeName(wordDto.getWordType());
+
         Optional<Word> wordAsOptional = wordRepository.findByEnglishTranslation(wordDto.getEnglishTranslation());
         if (wordAsOptional.isEmpty()) {
             throw new ResourceNotFoundException("Word", "english translation", wordDto.getEnglishTranslation());
         }
+
         Word word = wordAsOptional.get();
         word.setPolishTranslation(wordDto.getPolishTranslation());
         word.setInSentence(wordDto.getInSentence());
+        word.setWordType(wordType);
 
 
         return modelMapper.map(wordRepository.save(word), WordDto.class);
@@ -79,13 +80,27 @@ public class WordServiceImpl implements WordService {
     public String deleteWordByEnglishTranslation(String englishWord) {
 
         Optional<Word> wordAsOptional = wordRepository.findByEnglishTranslation(englishWord);
-        if (wordAsOptional.isEmpty()){
+        if (wordAsOptional.isEmpty()) {
             throw new ResourceNotFoundException("Word", "english translation", englishWord);
         }
 
         Word wordToDelete = wordAsOptional.get();
         wordRepository.delete(wordToDelete);
 
-        return "Word '" + englishWord + "' has been deleted." ;
+        return "Word '" + englishWord + "' has been deleted.";
+    }
+
+    private WordType getWordTypeName(String wordTypeName) {
+        List<Object[]> wordTypeNameResultAsListOfObjects = wordTypeRepository.getWordTypeNameOnly(wordTypeName);
+        if (wordTypeNameResultAsListOfObjects.size() == 0) {
+            throw new ResourceNotFoundException("Word type", wordTypeName);
+        }
+        Object[] wordTypeNameResultAsObjects = wordTypeNameResultAsListOfObjects.get(0);
+
+        WordType wordType = new WordType();
+        wordType.setId((Long) wordTypeNameResultAsObjects[0]);
+        wordType.setTypeName((String) wordTypeNameResultAsObjects[1]);
+
+        return wordType;
     }
 }

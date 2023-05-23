@@ -18,7 +18,7 @@ public class WordController {
 
 
 
-    @GetMapping("{englishTranslation}")
+    @GetMapping("/{englishTranslation}")
     public ResponseEntity<WordDto> getWordByEnglishTranslation(@PathVariable String englishTranslation) {
         WordDto wordDto = wordService.getWordByEnglishTranslation(englishTranslation);
         return ResponseEntity.ok(wordDto);
@@ -36,7 +36,7 @@ public class WordController {
         return ResponseEntity.ok(updatedWord);
     }
 
-    @DeleteMapping("{englishWord}")
+    @DeleteMapping("/{englishWord}")
     public ResponseEntity<String> deleteWord(@PathVariable String englishWord){
         return ResponseEntity.ok(wordService.deleteWordByEnglishTranslation(englishWord));
     }
