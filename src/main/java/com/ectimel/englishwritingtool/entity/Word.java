@@ -33,8 +33,8 @@ public class Word {
     private String inSentence;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "word_type_id", nullable = false)
-    private WordType wordType;
+    @JoinColumn(name = "categories_id", nullable = false)
+    private Category category;
 
     @CreationTimestamp
     private Date createdOn;

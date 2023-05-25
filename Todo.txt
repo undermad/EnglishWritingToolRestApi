@@ -1,9 +1,11 @@
 1. Create MySql Database and connection with app. COMPLETED *******
 2. Create Word entity(CRUD) and all necessary layers. IN PROGRESS
     - debug WordType in WordServiceImpl COMPLETED
-    - check if we load all word list when getting word from database
-    - Rename WordType to Category
-    - create WordCategoryController
+    - check if we load all word list when getting word from database COMPLETED
+    - Rename WordType to Category COMPLETED
+    - create WordCategoryController INPROGRESS
+        - add pagination support
+        - add getAllCategories @Get method
 
 3. Add validation support
 4. Add security support (OAuth? Bearer?)
