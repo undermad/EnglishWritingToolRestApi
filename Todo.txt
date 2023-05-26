@@ -1,11 +1,13 @@
 1. Create MySql Database and connection with app. COMPLETED *******
-2. Create Word entity(CRUD) and all necessary layers. IN PROGRESS
+2. Create Word entity(CRUD) and all necessary layers. COMPLETED
     - debug WordType in WordServiceImpl COMPLETED
     - check if we load all word list when getting word from database COMPLETED
-    - Rename WordType to Category COMPLETED
-    - create WordCategoryController INPROGRESS
-        - add pagination support
-        - add getAllCategories @Get method
+    - rename WordType to Category COMPLETED
+    - create CategoryController COMPLETED
+        - add pagination support COMPLETED
+        - add getAllCategories @Get method COMPLETED
+
+Implement support for irregular verbs.
 
 3. Add validation support
 4. Add security support (OAuth? Bearer?)
@@ -17,8 +19,8 @@
 9. Create ReactApp with basic functionality
 10. Add Google Translate Api support in Spring app and MAKE SURE WE CAN'T OVERUSE IT.
     - all word added to database should be translated by google api
-      and if match could be allowed in global database, if not should
-      be stored es specific word for individual user
+      and if match - word should be allowed in global database, if not should
+      be stored as specific word for individual user
 
 11. Add statistics and suggestions support
 
@@ -26,3 +28,4 @@
 
 Others(important)
 - force all englishTranslation and polishTranslation fields to be lower case in React App
+- think about mobile app
