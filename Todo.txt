@@ -10,8 +10,8 @@
 Implement support for irregular verbs.
     - create basic functionality                                                COMPLETED
     - find them as txt or csv file                                              COMPLETED
-    - translate them to Polish from German language                             IN PROGRESS
-    - load them to database
+    - translate them to Polish from German language                             COMPLETED
+    - load them to database                                                     COMPLETED
 
 3. Add validation support
 4. Add security support (OAuth? Bearer?)
@@ -21,10 +21,12 @@ Implement support for irregular verbs.
 8. Add 4000 essential words in english language
 
 9. Create ReactApp with basic functionality
-10. Add Google Translate Api support in Spring app and MAKE SURE WE CAN'T OVERUSE IT.
+10. Add Google Translate Api or dictionary api or both
     - all word added to database should be translated by google api
       and if match - word should be allowed in global database, if not should
       be stored as specific word for individual user
+
+    - use dictionary api to get necessary information about words https://dictionaryapi.dev/
 
 11. Add statistics and suggestions support
 
