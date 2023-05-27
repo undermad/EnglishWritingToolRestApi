@@ -10,15 +10,14 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-public class PageableResponse {
+public class PageableResponse<T> {
 
-    private String categoryName;
-    private List<WordDto> content;
+    private String resourceName;
+    private List<T> content;
     private int pageNo;
     private int pageSize;
     private int totalPages;
     private long totalElements;
     private String sortBy;
-    private String sortDirection;
 
 }

@@ -1,13 +1,17 @@
-1. Create MySql Database and connection with app. COMPLETED *******
-2. Create Word entity(CRUD) and all necessary layers. COMPLETED
-    - debug WordType in WordServiceImpl COMPLETED
-    - check if we load all word list when getting word from database COMPLETED
-    - rename WordType to Category COMPLETED
-    - create CategoryController COMPLETED
-        - add pagination support COMPLETED
-        - add getAllCategories @Get method COMPLETED
+1. Create MySql Database and connection with app.                               COMPLETED *******
+2. Create Word entity(CRUD) and all necessary layers.                           COMPLETED
+    - debug WordType in WordServiceImpl                                         COMPLETED
+    - check if we load all word list when getting word from database            COMPLETED
+    - rename WordType to Category                                               COMPLETED
+    - create CategoryController                                                 COMPLETED
+        - add pagination support                                                COMPLETED
+        - add getAllCategories @Get method                                      COMPLETED
 
 Implement support for irregular verbs.
+    - create basic functionality                                                COMPLETED
+    - find them as txt or csv file                                              COMPLETED
+    - translate them to Polish from German language                             IN PROGRESS
+    - load them to database
 
 3. Add validation support
 4. Add security support (OAuth? Bearer?)

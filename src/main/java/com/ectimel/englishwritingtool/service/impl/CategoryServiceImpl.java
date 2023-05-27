@@ -1,6 +1,5 @@
 package com.ectimel.englishwritingtool.service.impl;
 
-import com.ectimel.englishwritingtool.dto.CategoryDto;
 import com.ectimel.englishwritingtool.dto.PageableResponse;
 import com.ectimel.englishwritingtool.dto.WordDto;
 import com.ectimel.englishwritingtool.entity.Category;
@@ -48,6 +47,7 @@ public class CategoryServiceImpl implements CategoryService {
                 (String) categoryAsListOfObjects.get(0)[1],
                 null);
 
+
         Page<Word> wordsAsPage = wordRepository.findAllByCategory(category, pageable);
         List<Word> wordsAsList = wordsAsPage.getContent();
         List<WordDto> words = wordsAsList
@@ -55,15 +55,14 @@ public class CategoryServiceImpl implements CategoryService {
                 .map((word -> modelMapper.map(word, WordDto.class)))
                 .toList();
 
-        return PageableResponse.builder()
-                .categoryName(category.getCategoryName())
+        return PageableResponse.<WordDto>builder()
+                .resourceName(category.getCategoryName())
                 .content(words)
                 .pageNo(wordsAsPage.getNumber())
                 .pageSize(wordsAsPage.getSize())
                 .totalPages(wordsAsPage.getTotalPages())
                 .totalElements(wordsAsPage.getTotalElements())
                 .sortBy(sortBy)
-                .sortDirection(sortDirection)
                 .build();
     }
 
