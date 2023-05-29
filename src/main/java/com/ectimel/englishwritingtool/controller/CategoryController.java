@@ -2,6 +2,7 @@ package com.ectimel.englishwritingtool.controller;
 
 import com.ectimel.englishwritingtool.dto.CategoryDto;
 import com.ectimel.englishwritingtool.dto.PageableResponse;
+import com.ectimel.englishwritingtool.dto.WordDto;
 import com.ectimel.englishwritingtool.service.CategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class CategoryController {
     }
 
     @GetMapping("/{categoryName}")
-    public ResponseEntity<PageableResponse> getCategoryByName(
+    public ResponseEntity<PageableResponse<WordDto>> getCategoryByName(
             @PathVariable(name = "categoryName") String categoryName,
             @RequestParam(value = "sortBy", defaultValue = "englishTranslation", required = false) String sortBy,
             @RequestParam(value = "sortDirection", defaultValue = "asc", required = false) String sortDirection,

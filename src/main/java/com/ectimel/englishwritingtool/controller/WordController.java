@@ -4,6 +4,7 @@ import com.ectimel.englishwritingtool.dto.WordDto;
 import com.ectimel.englishwritingtool.service.WordService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,6 +25,7 @@ public class WordController {
         return ResponseEntity.ok(wordDto);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<WordDto> createWord(@RequestBody WordDto wordDto) {
         WordDto createdWord = wordService.createWord(wordDto);

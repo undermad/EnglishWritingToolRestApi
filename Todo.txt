@@ -13,8 +13,45 @@ Implement support for irregular verbs.
     - translate them to Polish from German language                             COMPLETED
     - load them to database                                                     COMPLETED
 
+
+4. Add security support (Bearer)
+    - add dependency                                                            COMPLETED
+    - create package dedicated for security only                                COMPLETED
+    - create SecurityConfig class and SecurityFilterChain bean                  IN PROGRESS
+    - add exception handling for access denied                                  COMPLETED
+      @ExceptionHandler(AccessDeniedException.class)
+    - create user and role entity class with relation ManyToMany                COMPLETED
+    - create user and role repository                                           COMPLETED
+    - create CustomUserDetailsService that implement UserDetailsService         COMPLETED
+        - override method,                                                      COMPLETED
+          get user from database,                                               COMPLETED
+          get user roles from database Set<GrantedAuthority>,                   COMPLETED
+          return new spring.User object                                         COMPLETED
+    - create AuthenticationManager bean in config class                         COMPLETED
+    - create admin and user roles and users in database                         COMPLETED
+
+    - implement login and register api
+    - implement JWT authentication
+
+
+
+
 3. Add validation support
-4. Add security support (OAuth? Bearer?)
+    - validate user login/register
+        - no special characters or language specific characters in username
+        - email validation
+        - password A-z a-z 1-9 !@#$%^&* with at least one
+            - capital letter
+            - special character
+            - number
+        - make sure password is different from username
+    - make sure that all words is lowercase character
+        -prevent capital letters or write code that change every character to lower case
+    - validate new words
+        - no special characters in translations
+        - allow dedicated language characters in Polish translation
+
+
 5. Create logic for association between words and user
 6. Limit how many word user can add. (maybe 100 per month)
 7. Add Swagger support

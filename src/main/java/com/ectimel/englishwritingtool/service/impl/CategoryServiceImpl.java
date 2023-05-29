@@ -31,7 +31,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public PageableResponse getCategory(String categoryName,
+    public PageableResponse<WordDto> getCategory(String categoryName,
                                         String sortBy,
                                         String sortDirection,
                                         int pageNo,
