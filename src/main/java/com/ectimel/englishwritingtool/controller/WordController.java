@@ -25,7 +25,6 @@ public class WordController {
         return ResponseEntity.ok(wordDto);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<WordDto> createWord(@RequestBody WordDto wordDto) {
         WordDto createdWord = wordService.createWord(wordDto);

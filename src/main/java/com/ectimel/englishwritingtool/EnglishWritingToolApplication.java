@@ -1,22 +1,23 @@
 package com.ectimel.englishwritingtool;
 
-import com.ectimel.englishwritingtool.entity.IrregularVerb;
 import com.ectimel.englishwritingtool.repository.IrregularVerbRepository;
+import com.ectimel.englishwritingtool.security.Role;
+import com.ectimel.englishwritingtool.security.RoleRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.io.*;
-
 @SpringBootApplication
 public class EnglishWritingToolApplication implements CommandLineRunner {
 
     private final IrregularVerbRepository irregularVerbRepository;
+    private final RoleRepository roleRepository;
 
-    public EnglishWritingToolApplication(IrregularVerbRepository irregularVerbRepository) {
+    public EnglishWritingToolApplication(IrregularVerbRepository irregularVerbRepository, RoleRepository roleRepository) {
         this.irregularVerbRepository = irregularVerbRepository;
+        this.roleRepository = roleRepository;
     }
 
     @Bean
@@ -28,9 +29,24 @@ public class EnglishWritingToolApplication implements CommandLineRunner {
         SpringApplication.run(EnglishWritingToolApplication.class, args);
     }
 
-    // LOAD IRREGULAR VERBS TO DATABASE ON FIRST DEPLOY
+    //LOAD NECESSARY DATA INTO DATABASE IF IT'S EMPTY
+
     @Override
     public void run(String... args) throws Exception {
+
+        // LOAD ROLES TO DATABASE IF TABLE DOESN'T EXIST - check id in db
+        // make sure role name is prefixed with ROLE_
+
+//        Role roleAdmin = new Role();
+//        roleAdmin.setRoleName("ROLE_ADMIN");
+//        roleRepository.save(roleAdmin);
+//
+//        Role roleUser = new Role();
+//        roleUser.setRoleName("ROLE_USER");
+//        roleRepository.save(roleUser);
+
+        // LOAD IRREGULAR VERBS TO DATABASE ON FIRST DEPLOY
+
 //        try (FileReader irregularVerbs = new FileReader(".\\irregular-verbs-pl.txt");
 //             BufferedReader br = new BufferedReader(irregularVerbs)) {
 //

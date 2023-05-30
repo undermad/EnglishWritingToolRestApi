@@ -29,9 +29,11 @@ Implement support for irregular verbs.
           return new spring.User object                                         COMPLETED
     - create AuthenticationManager bean in config class                         COMPLETED
     - create admin and user roles and users in database                         COMPLETED
-
+    - load roles to database with code on first run/deploy                      COMPLETED
     - implement login and register api
     - implement JWT authentication
+
+    - set permissions for each method in controller class
 
 
 
@@ -44,9 +46,9 @@ Implement support for irregular verbs.
             - capital letter
             - special character
             - number
-        - make sure password is different from username
-    - make sure that all words is lowercase character
-        -prevent capital letters or write code that change every character to lower case
+
+    - make sure that all words added to database is lowercase character
+        - prevent capital letters or write code that change every character to lower case
     - validate new words
         - no special characters in translations
         - allow dedicated language characters in Polish translation

@@ -40,4 +40,23 @@ public class GlobalExceptionHandler {
                 webRequest.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.UNAUTHORIZED);
     }
+
+    @ExceptionHandler(ApiException.class)
+    public ResponseEntity<ErrorDetails> apiException(Exception exception, WebRequest webRequest) {
+        ErrorDetails errorDetails = new ErrorDetails(
+                exception.getMessage(),
+                new Date(),
+                webRequest.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorDetails> globalException(Exception exception, WebRequest webRequest) {
+        ErrorDetails errorDetails = new ErrorDetails(
+                exception.getMessage(),
+                new Date(),
+                webRequest.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
 }
