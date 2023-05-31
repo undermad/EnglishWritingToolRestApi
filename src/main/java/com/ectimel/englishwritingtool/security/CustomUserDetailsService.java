@@ -1,5 +1,7 @@
 package com.ectimel.englishwritingtool.security;
 
+import com.ectimel.englishwritingtool.security.api.User;
+import com.ectimel.englishwritingtool.security.api.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

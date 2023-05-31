@@ -30,8 +30,9 @@ Implement support for irregular verbs.
     - create AuthenticationManager bean in config class                         COMPLETED
     - create admin and user roles and users in database                         COMPLETED
     - load roles to database with code on first run/deploy                      COMPLETED
-    - implement login and register api
-    - implement JWT authentication
+    - implement login and register api                                          COMPLETED
+    - implement JWT authentication                                              COMPLETED
+        (USE BASIC AUTH TO RECEIVE TOKEN)
 
     - set permissions for each method in controller class
 

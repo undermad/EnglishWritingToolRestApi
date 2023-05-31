@@ -1,8 +1,7 @@
 package com.ectimel.englishwritingtool;
 
 import com.ectimel.englishwritingtool.repository.IrregularVerbRepository;
-import com.ectimel.englishwritingtool.security.Role;
-import com.ectimel.englishwritingtool.security.RoleRepository;
+import com.ectimel.englishwritingtool.security.api.RoleRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

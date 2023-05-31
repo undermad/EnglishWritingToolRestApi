@@ -1,4 +1,4 @@
-package com.ectimel.englishwritingtool.security;
+package com.ectimel.englishwritingtool.security.api;
 
 
 import jakarta.persistence.*;
