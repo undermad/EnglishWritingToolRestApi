@@ -7,7 +7,7 @@
         - add pagination support                                                COMPLETED
         - add getAllCategories @Get method                                      COMPLETED
 
-Implement support for irregular verbs.
+Implement support for irregular verbs.                                          COMPLETED
     - create basic functionality                                                COMPLETED
     - find them as txt or csv file                                              COMPLETED
     - translate them to Polish from German language                             COMPLETED
@@ -34,7 +34,14 @@ Implement support for irregular verbs.
     - implement JWT authentication                                              COMPLETED
         (USE BASIC AUTH TO RECEIVE TOKEN)
 
+
     - set permissions for each method in controller class
+        - all get method should be accessible for everyone without registration
+        - post method only for user
+        - delete method only for user
+
+    - add app constants - consider usage of enum
+        - replace default props with constants in paginated responses
 
 
 
@@ -62,11 +69,11 @@ Implement support for irregular verbs.
 
 9. Create ReactApp with basic functionality
 10. Add Google Translate Api or dictionary api or both
-    - all word added to database should be translated by google api
+    -? all word added to database should be translated by google api
       and if match - word should be allowed in global database, if not should
       be stored as specific word for individual user
 
-    - use dictionary api to get necessary information about words https://dictionaryapi.dev/
+    -? use dictionary api to get necessary information about words https://dictionaryapi.dev/
 
 11. Add statistics and suggestions support
 

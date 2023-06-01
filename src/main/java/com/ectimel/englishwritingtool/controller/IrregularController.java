@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/irregular-verbs")
 public class IrregularController {
+    // EVERYONE CEN USE GET METHOD
 
     private final IrregularVerbService irregularVerbService;
 
