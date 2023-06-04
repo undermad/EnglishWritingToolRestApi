@@ -1,15 +1,19 @@
 package com.ectimel.englishwritingtool.security.jwt;
 
 import com.ectimel.englishwritingtool.exception.ApiException;
+import com.ectimel.englishwritingtool.security.api.User;
+import com.ectimel.englishwritingtool.security.api.UserRepository;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.Optional;
 
 @Component
 public class JwtTokenProvider {
@@ -19,6 +23,13 @@ public class JwtTokenProvider {
 
     @Value("${app.jwt-expiration-milliseconds}")
     private long expirationTime;
+
+    private final UserRepository userRepository;
+
+    public JwtTokenProvider(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
 
     private Key key() {
         // decode secret key and return as Key class
@@ -72,5 +83,18 @@ public class JwtTokenProvider {
         }
 
         return true;
+    }
+
+    public Long getUserIdFromToken(String token) {
+        if(!token.contains("Bearer")){
+            throw new ApiException("Please, log-in first");
+        }
+        String email = getUsername(token.substring(7));
+        Optional<User> userAsOptional = userRepository.findByUsernameOrEmail(email, email);
+        if (userAsOptional.isEmpty()) {
+            throw new ApiException("Please, log-in first.");
+        }
+        User user = userAsOptional.get();
+        return user.getId();
     }
 }

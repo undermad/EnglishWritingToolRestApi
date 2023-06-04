@@ -1,5 +1,6 @@
 package com.ectimel.englishwritingtool.security.api;
 
+import com.ectimel.englishwritingtool.security.jwt.JwtAuthResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -25,18 +25,21 @@ public class WordController {
         return ResponseEntity.ok(wordDto);
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PostMapping
     public ResponseEntity<WordDto> createWord(@RequestBody WordDto wordDto) {
         WordDto createdWord = wordService.createWord(wordDto);
         return new ResponseEntity<>(createdWord, HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PutMapping
     public ResponseEntity<WordDto> updateWord(@RequestBody WordDto wordDto){
         WordDto updatedWord = wordService.updateWord(wordDto);
         return ResponseEntity.ok(updatedWord);
     }
 
+    @PreAuthorize("hasRole('USER')")
     @DeleteMapping("/{englishWord}")
     public ResponseEntity<String> deleteWord(@PathVariable String englishWord){
         return ResponseEntity.ok(wordService.deleteWordByEnglishTranslation(englishWord));

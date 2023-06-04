@@ -7,7 +7,7 @@
         - add pagination support                                                COMPLETED
         - add getAllCategories @Get method                                      COMPLETED
 
-Implement support for irregular verbs.                                          COMPLETED
+3. Implement support for irregular verbs.                                          COMPLETED
     - create basic functionality                                                COMPLETED
     - find them as txt or csv file                                              COMPLETED
     - translate them to Polish from German language                             COMPLETED
@@ -36,17 +36,38 @@ Implement support for irregular verbs.                                          
 
 
     - set permissions for each method in controller class
-        - all get method should be accessible for everyone without registration
-        - post method only for user
-        - delete method only for user
+        - all get method should be accessible for everyone without registration COMPLETED
+        - post methods only for users                                           COMPLETED
+        - delete methods only for users                                         COMPLETED
+        - put methods only for users                                            COMPLETED
 
+5. Create logic for association between words and user
+    - create 3 tables that represent each stage of particular word              COMPLETED
+    - add repo, service and controller layer                                    COMPLETED
+    - add getUserIdFromToken method                                             COMPLETED
+    - create get methods                                                        COMPLETED
+
+    - create add method
+        - check if already exist in global database
+        - use dictionary api if not
+
+    - create update method
+        - check how many correct attempts it has
+        - check if it's there longer than one week
+        - update correct and incorrect and if necessary move to next stage
+
+    - create delete method
+
+
+
+6. Little tasks
     - add app constants - consider usage of enum
         - replace default props with constants in paginated responses
 
 
 
 
-3. Add validation support
+7. Add validation support
     - validate user login/register
         - no special characters or language specific characters in username
         - email validation
@@ -62,7 +83,7 @@ Implement support for irregular verbs.                                          
         - allow dedicated language characters in Polish translation
 
 
-5. Create logic for association between words and user
+
 6. Limit how many word user can add. (maybe 100 per month)
 7. Add Swagger support
 8. Add 4000 essential words in english language

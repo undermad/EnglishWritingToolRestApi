@@ -68,7 +68,6 @@ public class WordServiceImpl implements WordService {
         }
 
         Word word = wordAsOptional.get();
-        word.setPolishTranslation(wordDto.getPolishTranslation());
         word.setInSentence(wordDto.getInSentence());
         word.setCategory(category);
 

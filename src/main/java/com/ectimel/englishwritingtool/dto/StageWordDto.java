@@ -7,10 +7,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class WordDto {
-    private String englishTranslation;
-    private String inSentence;
-    private String category;
+@NoArgsConstructor
+public class StageWordDto {
+    private WordDto wordDto;
+    private String userTranslation;
+    private int correct;
+    private int incorrect;
 }

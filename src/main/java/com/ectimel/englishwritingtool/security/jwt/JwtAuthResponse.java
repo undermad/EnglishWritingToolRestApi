@@ -1,4 +1,4 @@
-package com.ectimel.englishwritingtool.security.api;
+package com.ectimel.englishwritingtool.security.jwt;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

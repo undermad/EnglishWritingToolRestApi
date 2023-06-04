@@ -1,22 +1,37 @@
 package com.ectimel.englishwritingtool;
 
+import com.ectimel.englishwritingtool.entity.IrregularVerb;
 import com.ectimel.englishwritingtool.repository.IrregularVerbRepository;
+import com.ectimel.englishwritingtool.security.api.Role;
 import com.ectimel.englishwritingtool.security.api.RoleRepository;
+import com.ectimel.englishwritingtool.security.api.User;
+import com.ectimel.englishwritingtool.security.api.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 @SpringBootApplication
 public class EnglishWritingToolApplication implements CommandLineRunner {
 
     private final IrregularVerbRepository irregularVerbRepository;
     private final RoleRepository roleRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
 
-    public EnglishWritingToolApplication(IrregularVerbRepository irregularVerbRepository, RoleRepository roleRepository) {
+    public EnglishWritingToolApplication(IrregularVerbRepository irregularVerbRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, UserRepository userRepository) {
         this.irregularVerbRepository = irregularVerbRepository;
         this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.userRepository = userRepository;
     }
 
     @Bean
@@ -33,8 +48,8 @@ public class EnglishWritingToolApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        // LOAD ROLES TO DATABASE IF TABLE DOESN'T EXIST - check id in db
-        // make sure role name is prefixed with ROLE_
+//         LOAD ROLES TO DATABASE IF TABLE DOESN'T EXIST - check id in db
+//         make sure role name is prefixed with ROLE_
 
 //        Role roleAdmin = new Role();
 //        roleAdmin.setRoleName("ROLE_ADMIN");
@@ -44,7 +59,31 @@ public class EnglishWritingToolApplication implements CommandLineRunner {
 //        roleUser.setRoleName("ROLE_USER");
 //        roleRepository.save(roleUser);
 
-        // LOAD IRREGULAR VERBS TO DATABASE ON FIRST DEPLOY
+
+//        ADD USER AND ADMIN TO DATABASE
+//        LOAD ROLES FIRST, THEN COMMENT OUT ROLES AND UNCOMMENT USERS
+
+//        User user = new User();
+//        user.setUsername("user");
+//        user.setPassword(passwordEncoder.encode("user"));
+//        user.setEmail("user@gmail.com");
+//        Set<Role> userRoles = new HashSet<>();
+//        userRoles.add(roleRepository.findByRoleName("ROLE_USER").get());
+//        user.setRoles(userRoles);
+//        userRepository.save(user);
+//
+//        User admin = new User();
+//        user.setUsername("admin");
+//        user.setPassword(passwordEncoder.encode("admin"));
+//        user.setEmail("admin@gmail.com");
+//        Set<Role> adminRoles = new HashSet<>();
+//        adminRoles.add(roleRepository.findByRoleName("ROLE_ADMIN").get());
+//        adminRoles.add(roleRepository.findByRoleName("ROLE_USER").get());
+//        user.setRoles(adminRoles);
+//        userRepository.save(admin);
+
+
+//         LOAD IRREGULAR VERBS TO DATABASE ON FIRST DEPLOY
 
 //        try (FileReader irregularVerbs = new FileReader(".\\irregular-verbs-pl.txt");
 //             BufferedReader br = new BufferedReader(irregularVerbs)) {
