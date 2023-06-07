@@ -10,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StageWordDto {
+    private Long id;
     private WordDto wordDto;
     private String userTranslation;
     private int correct;
