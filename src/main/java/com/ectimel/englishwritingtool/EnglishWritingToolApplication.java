@@ -4,8 +4,8 @@ import com.ectimel.englishwritingtool.entity.IrregularVerb;
 import com.ectimel.englishwritingtool.repository.IrregularVerbRepository;
 import com.ectimel.englishwritingtool.security.api.Role;
 import com.ectimel.englishwritingtool.security.api.RoleRepository;
-import com.ectimel.englishwritingtool.security.api.User;
 import com.ectimel.englishwritingtool.security.api.UserRepository;
+import com.ectimel.englishwritingtool.service.impl.EmailSenderService;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,8 +18,6 @@ import org.springframework.web.client.RestTemplate;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
 @SpringBootApplication
 public class EnglishWritingToolApplication implements CommandLineRunner {
@@ -28,12 +26,14 @@ public class EnglishWritingToolApplication implements CommandLineRunner {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
+    private final EmailSenderService emailSenderService;
 
-    public EnglishWritingToolApplication(IrregularVerbRepository irregularVerbRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, UserRepository userRepository) {
+    public EnglishWritingToolApplication(IrregularVerbRepository irregularVerbRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, UserRepository userRepository, EmailSenderService emailSenderService) {
         this.irregularVerbRepository = irregularVerbRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
+        this.emailSenderService = emailSenderService;
     }
 
     @Bean
@@ -56,6 +56,7 @@ public class EnglishWritingToolApplication implements CommandLineRunner {
 
 //        loadRolesToDatabase();
 //        loadIrregularVerbsToDatabase();
+        emailSenderService.sendEmail("dtworek94@gmail.com", "test", "Hello world of gmail!");
 
     }
 
